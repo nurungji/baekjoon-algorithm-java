@@ -2,10 +2,11 @@ package algo_1149;
 
 import java.util.Scanner;
 
-public class RGB거리 {
+public class O_RGB거리_1 {
 
 	static int n;
 	static int arr[][] = new int[1001][4];
+	static int sum = 987654321;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -16,23 +17,30 @@ public class RGB거리 {
 			arr[i][3] = sc.nextInt();
 		}
 
-		int result = algo(1, 1);
+		algo(1, 0, 0);
 
-		System.out.println(result);		
+		System.out.println(sum);		
 	}
 
-	private static int algo(int idx, int cur_color) {
-				
-		for(int i = 1; i <= 3; i++) {
-			if(idx == n) {
-				
-				return ;
+	private static void algo(int idx, int cur_color, int nowSum) {
+		
+		int tSum = 0;
+		
+		if(idx > n) {
+			if(nowSum < sum) {
+				sum = nowSum;
 			}
+			return;
+		}
+		
+		for(int i = 1; i <= 3 && idx <= n; i++) {			
 			if(i == cur_color)
 				continue;
-			
-			
-			return algo()
-		}
+			else {				
+				tSum = nowSum + arr[idx][i];
+				algo(idx + 1, i, tSum);
+				tSum -= arr[idx][i];				
+			}
+		}		
 	}
 }
