@@ -14,3 +14,7 @@ interface Stack {
     void delete();
     char peek();
 }
+
+class ArrayStack implements Stack {
+
+}
